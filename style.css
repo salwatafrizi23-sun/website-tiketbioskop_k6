@@ -1,0 +1,155 @@
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --muted:#9aa6b2;
+  --accent:#2dd4bf;
+  --accent-2:#60a5fa;
+  --danger:#fb7185;
+  --surface:#08101a;
+  --glass: rgba(255,255,255,0.03);
+  --radius:12px;
+  --gap:14px;
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:linear-gradient(180deg,#071022 0%, #081426 100%);
+  color:#e6eef6;
+  font-size:16px;
+  line-height:1.4;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding:20px;
+}
+
+/* container */
+.app{
+  max-width:1100px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+}
+
+/* header */
+.header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:18px;
+}
+.brand{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.logo{
+  width:48px;height:48px;border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  display:flex;align-items:center;justify-content:center;font-weight:700;color:#062023;
+}
+nav.mainnav{display:flex;gap:8px;flex-wrap:wrap}
+nav.mainnav a, nav.mainnav button{
+  background:transparent;border:1px solid rgba(255,255,255,0.06);
+  padding:8px 12px;border-radius:10px;color:var(--muted);text-decoration:none;font-size:14px;
+}
+nav.mainnav a:hover, nav.mainnav button:hover{color:#fff;border-color:rgba(255,255,255,0.12)}
+
+/* card */
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:var(--radius);
+  padding:16px;
+  box-shadow:0 4px 20px rgba(2,6,23,0.6);
+}
+
+/* grid of movies */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+  gap:var(--gap);
+}
+
+/* movie tile */
+.movie{
+  display:flex;flex-direction:column;gap:8px;
+}
+.poster{
+  height:120px;border-radius:8px;background:linear-gradient(180deg,#0b2740,#0a1730);
+  display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent-2);
+}
+.movie h3{margin:0;font-size:16px}
+.meta{font-size:13px;color:var(--muted)}
+
+/* seat grid */
+.seat-area{display:flex;flex-direction:column;gap:12px;padding:18px}
+.screen-label{height:10px;border-radius:6px;background:linear-gradient(90deg,#213047,#1b2432)}
+.seat-grid{
+  display:grid;grid-template-columns: repeat(8,1fr);gap:8px;
+}
+.seat{
+  position:relative;
+}
+.seat input[type="checkbox"]{
+  display:none;
+}
+.seat label{
+  display:block;padding:10px 6px;border-radius:8px;text-align:center;background:var(--glass);
+  cursor:pointer;border:1px solid rgba(255,255,255,0.03);font-weight:600;color:var(--muted);
+  user-select:none;
+}
+.seat label:hover{transform:translateY(-3px);transition:all .12s}
+.seat input[type="checkbox"]:checked + label{
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:#052428; border-color:rgba(255,255,255,0.06);
+}
+.seat label.taken{
+  background:linear-gradient(90deg,#1f2730,#152029);color:#7b8790;cursor:not-allowed;opacity:0.7;
+}
+
+/* legend */
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.legend .box{width:14px;height:14px;border-radius:4px;display:inline-block;margin-right:6px;vertical-align:middle}
+.legend .seat-style{background:var(--glass)}
+.legend .taken-style{background:#31383f}
+.legend .taken{background:#444}
+
+/* forms */
+.form-row{display:flex;flex-direction:column;gap:8px;margin-bottom:8px}
+input[type="text"], input[type="email"], input[type="date"], select{
+  background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:8px;color:#e6eef6;
+}
+label{font-size:13px;color:var(--muted)}
+
+/* summary box */
+.summary-box{background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;color:var(--muted);font-size:14px}
+
+/* buttons */
+.btn{
+  display:inline-block;padding:10px 14px;border-radius:10px;border:0;background:var(--accent);color:#022;cursor:pointer;font-weight:700;text-decoration:none;
+}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+.btn:disabled{opacity:0.5;cursor:not-allowed}
+
+/* actions that are toggled by CSS (kursi page) */
+.actions{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
+.actions .btn-real{display:none} /* hidden by default */
+.actions .btn-disabled{display:inline-block}
+
+/* CSS-only enabling of actions:
+   If any checkbox in .seat-grid is checked, then a selector from that checked input can target the following sibling .actions.
+   We put .actions immediately after the .seat-grid so this works.
+*/
+.seat-grid input:checked ~ .actions .btn-real{display:inline-block}
+.seat-grid input:checked ~ .actions .btn-disabled{display:none}
+
+/* small screens */
+@media (max-width:700px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .seat-grid{grid-template-columns:repeat(5,1fr)}
+  body{padding:12px}
+}
