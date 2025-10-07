@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pilih Kursi – Bioskop K6</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+    header {
+      background: #111;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+    .seat-container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .seats {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+    .seat {
+      width: 35px;
+      height: 35px;
+      background-color: #ccc;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+    .seat input {
+      display: none;
+    }
+    .seat label {
+      display: block;
+      width: 100%;
+      height: 100%;
+      line-height: 35px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .seat input:checked + label {
+      background-color: #1e90ff;
+      color: white;
+    }
+    .btn {
+      margin-top: 25px;
+      padding: 10px 20px;
+      background-color: #1e90ff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.2s;
+    }
+    .btn:hover {
+      background-color: #005ccc;
+    }
+    .btn-disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">🎬 Bioskop K6</div>
+    <nav>
+      <a href="beranda.html">Beranda</a>
+      <a href="detail-film.html">Detail</a>
+      <a href="kursi.html">Kursi</a>
+    </nav>
+  </header>
+
+  <div class="seat-container">
+    <h2>Pilih Kursi Anda</h2>
+    <form action="jadwal.html" method="get">
+      <div class="seats">
+        <!-- Baris A -->
+        <div class="seat"><input type="checkbox" id="A1"><label for="A1">A1</label></div>
+        <div class="seat"><input type="checkbox" id="A2"><label for="A2">A2</label></div>
+        <div class="seat"><input type="checkbox" id="A3"><label for="A3">A3</label></div>
+        <div class="seat"><input type="checkbox" id="A4"><label for="A4">A4</label></div>
+        <div class="seat"><input type="checkbox" id="A5"><label for="A5">A5</label></div>
+        <div class="seat"><input type="checkbox" id="A6"><label for="A6">A6</label></div>
+        <div class="seat"><input type="checkbox" id="A7"><label for="A7">A7</label></div>
+        <div class="seat"><input type="checkbox" id="A8"><label for="A8">A8</label></div>
+
+        <!-- Baris B -->
+        <div class="seat"><input type="checkbox" id="B1"><label for="B1">B1</label></div>
+        <div class="seat"><input type="checkbox" id="B2"><label for="B2">B2</label></div>
+        <div class="seat"><input type="checkbox" id="B3"><label for="B3">B3</label></div>
+        <div class="seat"><input type="checkbox" id="B4"><label for="B4">B4</label></div>
+        <div class="seat"><input type="checkbox" id="B5"><label for="B5">B5</label></div>
+        <div class="seat"><input type="checkbox" id="B6"><label for="B6">B6</label></div>
+        <div class="seat"><input type="checkbox" id="B7"><label for="B7">B7</label></div>
+        <div class="seat"><input type="checkbox" id="B8"><label for="B8">B8</label></div>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn btn-disabled" id="btn-disabled">
+          Pilih Kursi Dulu
+        </button>
+        <button type="submit" class="btn" id="btn-submit" style="display:none">
+          Lanjut ke Jadwal
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <footer style="text-align:center;padding:20px;color:#555">
+    © 2025 Bioskop K6 – Semua Hak Dilindungi
+  </footer>
+
+  <script>
+    // aktifkan tombol kalau ada kursi dipilih
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const btnDisabled = document.getElementById('btn-disabled');
+    const btnSubmit = document.getElementById('btn-submit');
+
+    function updateButton() {
+      const anyChecked = Array.from(checkboxes).some(c => c.checked);
+      if (anyChecked) {
+        btnDisabled.style.display = 'none';
+        btnSubmit.style.display = 'inline-block';
+      } else {
+        btnDisabled.style.display = 'inline-block';
+        btnSubmit.style.display = 'none';
+      }
+    }
+
+    checkboxes.forEach(c => c.addEventListener('change', updateButton));
+    updateButton(); // jalankan saat awal
+  </script>
+
+</body>
+</html>

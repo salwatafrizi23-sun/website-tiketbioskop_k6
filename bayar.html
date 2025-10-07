@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pembayaran — Bioskop K6</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header"><div class="brand"><div class="logo">BI</div><div><h1 style="margin:0">Bioskop K6</h1><div style="font-size:12px;color:var(--muted)">Pembayaran</div></div></div>
+      <nav class="mainnav"><a href="beranda.html">Beranda</a><a href="jadwal.html">Jadwal</a><a href="bayar.html">Bayar</a></nav>
+    </header>
+
+    <main style="margin-top:18px">
+      <section style="display:flex;gap:18px;flex-wrap:wrap">
+        <div style="flex:1;min-width:260px" class="card">
+          <h3>Data Pemesan</h3>
+          <!-- Form kirim ke success.html -->
+          <form action="success.html" method="get">
+            <!-- Field wajib diisi (required) -->
+            <div class="form-row">
+              <label for="paymentMethod">Metode Pembayaran</label>
+              <select id="paymentMethod" name="paymentMethod" required>
+                <option value="">-- Pilih --</option>
+                <option>Transfer Bank</option>
+                <option>E-Wallet</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="buyerName">Nama Pemesan</label>
+              <input id="buyerName" name="name" type="text" placeholder="Nama lengkap" required>
+            </div>
+
+            <div class="form-row">
+              <label for="buyerEmail">Email</label>
+              <input id="buyerEmail" name="email" type="email" placeholder="email@domain.com" required>
+            </div>
+
+            <div class="form-row">
+              <label for="buyerPhone">No. HP</label>
+              <input id="buyerPhone" name="phone" type="text" placeholder="0812xxxx" required>
+            </div>
+
+            <!-- Hidden: jika form berasal dari alur, parameter seats, cinema, date, time akan ikut ke success via GET -->
+            <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px">
+              <a class="btn ghost" href="jadwal.html">Kembali</a>
+              <button class="btn" type="submit">Bayar Sekarang</button>
+            </div>
+          </form>
+        </div>
+
+        <div style="width:320px" class="card">
+          <h3>Ringkasan Pesanan</h3>
+          <div class="summary-box">
+            <!-- Ini tempat ringkasan; untuk menampilkan data sebenarnya butuh JS/server.
+                 Kita berikan info bagaimana data akan dikirim -->
+            <div style="color:var(--muted)">
+              Judul: <strong>Senjata 2</strong><br>
+              Kursi: <em>dikirim dari halaman pilih kursi</em><br>
+              Bioskop / Tanggal / Jam: <em>dikirim dari halaman jadwal</em><br>
+              Total: <strong>Rp 0</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer style="margin-top:auto;padding:14px;text-align:center;color:var(--muted)">© 2025 • Demo - Kelompok 6</footer>
+  </div>
+</body>
+</html>

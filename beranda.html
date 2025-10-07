@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Beranda — Bioskop K6</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="brand">
+        <div class="logo">BI</div>
+        <div>
+          <h1 style="margin:0">Bioskop K6</h1>
+          <div style="font-size:12px;color:var(--muted)">Demo • 2025</div>
+        </div>
+      </div>
+      <nav class="mainnav">
+        <a href="beranda.html">Beranda</a>
+        <a href="detail-film.html?movie=1">Detail Film</a>
+        <a href="kursi.html">Pilih Kursi</a>
+        <a href="jadwal.html">Jadwal & Lokasi</a>
+        <a href="bayar.html">Pembayaran</a>
+      </nav>
+    </header>
+
+    <main style="margin-top:18px">
+      <section class="card">
+        <h2 style="margin:0 0 12px">Sedang Tayang</h2>
+        <div class="grid">
+          <!-- contoh 3 film, link ke halaman detail (movie id dikirim via query string) -->
+          <div class="movie card">
+            <div class="poster">Senjata 2</div>
+            <h3>Senjata 2</h3>
+            <div class="meta">Aksi • 2j 20m</div>
+            <div style="height:8px"></div>
+            <a class="btn" href="detail-film.html?movie=1">Lihat Detail</a>
+          </div>
+
+          <div class="movie card">
+            <div class="poster">Malam Merah</div>
+            <h3>Malam Merah</h3>
+            <div class="meta">Thriller • 1j 55m</div>
+            <div style="height:8px"></div>
+            <a class="btn" href="detail-film.html?movie=2">Lihat Detail</a>
+          </div>
+
+          <div class="movie card">
+            <div class="poster">Pelangi Kita</div>
+            <h3>Pelangi Kita</h3>
+            <div class="meta">Drama • 2j 5m</div>
+            <div style="height:8px"></div>
+            <a class="btn" href="detail-film.html?movie=3">Lihat Detail</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer style="margin-top:auto;padding:14px;text-align:center;color:var(--muted)">© 2025 • Demo - Kelompok 6</footer>
+  </div>
+</body>
+</html>
