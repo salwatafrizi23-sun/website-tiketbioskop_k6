@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bioskop Online — Pilih Kursi (Versi CSS)</title>
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    /* 1. Atur gaya visual saat kursi dipilih (sama seperti sebelumnya) */
+    input[type="checkbox"]:checked + label.seat {
+      background-color: #6c50d4;
+      color: white;
+    }
+    
+    label.seat {
+      cursor: pointer;
+    }
+
+    /* 2. Secara default, buat tombol "Lanjut" terlihat non-aktif dan tidak bisa diklik */
+    #seat-form button[type="submit"] {
+      opacity: 0.5; /* Membuatnya terlihat pudar */
+      pointer-events: none; /* Ini yang membuatnya tidak bisa diklik */
+      cursor: not-allowed; /* Mengubah ikon mouse menjadi tanda "dilarang" */
+    }
+
+    /* 3. JIKA form dengan id "seat-form" MEMILIKI (:has) sebuah input yang dicentang (:checked),
+          maka ubah gaya tombol "Lanjut" di dalamnya menjadi aktif kembali. */
+    #seat-form:has(input[name="seat"]:checked) button[type="submit"] {
+      opacity: 1; /* Kembalikan ke warna normal */
+      pointer-events: auto; /* Izinkan untuk diklik kembali */
+      cursor: pointer; /* Kembalikan ikon mouse menjadi pointer */
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="brand">
+        <div class="logo">BI</div>
+        <div>
+          <h1>Bioskop K6</h1>
+          <div style="font-size:12px;color:var(--muted)">Demo Statis (Tanpa JS)</div>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html"><button>Beranda</button></a>
+        <a href="detail.html"><button>Detail Film</button></a>
+        <a href="kursi.html"><button class="active">Pilih Kursi</button></a>
+        <a href="jadwal.html"><button>Jadwal & Lokasi</button></a>
+        <a href="bayar.html"><button>Pembayaran</button></a>
+      </nav>
+    </header>
+
+    <main class="screen" style="margin-top:18px">
+      <section id="kursi" class="page active">
+        <form action="jadwal.html" id="seat-form">
+          <div style="display:flex;gap:18px;flex-direction:column">
+            <div class="seat-area card">
+              <div style="text-align:center;color:var(--muted);font-size:13px">Layar</div>
+              <div class="screen-label"></div>
+              
+              <div class="seat-grid" id="seatGrid">
+                <input type="checkbox" id="s1" name="seat" value="1" hidden /><label for="s1" class="seat">1</label>
+                <input type="checkbox" id="s2" name="seat" value="2" hidden /><label for="s2" class="seat">2</label>
+                <input type="checkbox" id="s3" name="seat" value="3" hidden /><label for="s3" class="seat">3</label>
+                <input type="checkbox" id="s4" name="seat" value="4" hidden /><label for="s4" class="seat">4</label>
+                <input type="checkbox" id="s5" name="seat" value="5" hidden /><label for="s5" class="seat">5</label>
+                <div class="seat taken">6</div> 
+                <div class="seat taken">7</div>
+                <input type="checkbox" id="s8" name="seat" value="8" hidden /><label for="s8" class="seat">8</label>
+                <input type="checkbox" id="s9" name="seat" value="9" hidden /><label for="s9" class="seat">9</label>
+                <input type="checkbox" id="s10" name="seat" value="10" hidden /><label for="s10" class="seat">10</label>
+                <input type="checkbox" id="s11" name="seat" value="11" hidden /><label for="s11" class="seat">11</label>
+                <input type="checkbox" id="s12" name="seat" value="12" hidden /><label for="s12" class="seat">12</label>
+                <div class="seat taken">13</div> 
+                <div class="seat taken">14</div>
+                <input type="checkbox" id="s15" name="seat" value="15" hidden /><label for="s15" class="seat">15</label>
+                <input type="checkbox" id="s16" name="seat" value="16" hidden /><label for="s16" class="seat">16</label>
+                <input type="checkbox" id="s17" name="seat" value="17" hidden /><label for="s17" class="seat">17</label>
+                <input type="checkbox" id="s18" name="seat" value="18" hidden /><label for="s18" class="seat">18</label>
+                <input type="checkbox" id="s19" name="seat" value="19" hidden /><label for="s19" class="seat">19</label>
+                <input type="checkbox" id="s20" name="seat" value="20" hidden /><label for="s20" class="seat">20</label>
+                <input type="checkbox" id="s21" name="seat" value="21" hidden /><label for="s21" class="seat">21</label>
+                <input type="checkbox" id="s22" name="seat" value="22" hidden /><label for="s22" class="seat">22</label>
+                <input type="checkbox" id="s23" name="seat" value="23" hidden /><label for="s23" class="seat">23</label>
+                <input type="checkbox" id="s24" name="seat" value="24" hidden /><label for="s24" class="seat">24</label>
+                <input type="checkbox" id="s25" name="seat" value="25" hidden /><label for="s25" class="seat">25</label>
+                <input type="checkbox" id="s26" name="seat" value="26" hidden /><label for="s26" class="seat">26</label>
+                <input type="checkbox" id="s27" name="seat" value="27" hidden /><label for="s27" class="seat">27</label> 
+                <div class="seat taken">28</div> 
+                <div class="seat taken">29</div>
+                <input type="checkbox" id="s30" name="seat" value="30" hidden /><label for="s30" class="seat">30</label>
+                <input type="checkbox" id="s31" name="seat" value="31" hidden /><label for="s31" class="seat">31</label>
+                <input type="checkbox" id="s32" name="seat" value="32" hidden /><label for="s32" class="seat">32</label>
+                <input type="checkbox" id="s33" name="seat" value="33" hidden /><label for="s33" class="seat">33</label>
+                <input type="checkbox" id="s34" name="seat" value="34" hidden /><label for="s34" class="seat">34</label>
+                <input type="checkbox" id="s35" name="seat" value="35" hidden /><label for="s35" class="seat">35</label>
+                <input type="checkbox" id="s36" name="seat" value="36" hidden /><label for="s36" class="seat">36</label>
+                <input type="checkbox" id="s37" name="seat" value="37" hidden /><label for="s37" class="seat">37</label>
+                <input type="checkbox" id="s38" name="seat" value="38" hidden /><label for="s38" class="seat">38</label>
+                <input type="checkbox" id="s39" name="seat" value="39" hidden /><label for="s39" class="seat">39</label>
+                <input type="checkbox" id="s40" name="seat" value="40" hidden /><label for="s40" class="seat">40</label>
+              </div>
+
+              <div class="legend">
+                <div class="legend-item"><div class="box selected-style"></div> Dipilih</div>
+                <div class="legend-item"><div class="box seat-style"></div> Kosong</div>
+                <div class="legend-item"><div class="box taken-style"></div> Terisi</div>
+              </div>
+            </div>
+            
+            <div style="display:flex;gap:10px;justify-content:flex-end">
+              <a href="detail.html"><button type="button" class="btn ghost">Kembali</button></a>
+              <button type="submit" class="btn" id="toJadwal">Lanjut ke Jadwal</button>
+            </div>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer>© 2025 • Demo - Kelompok 6</footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bioskop Online — Detail Film</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="brand">
+        <div class="logo">BI</div>
+        <div>
+          <h1>Bioskop K6</h1>
+          <div style="font-size:12px;color:var(--muted)">Demo </div>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html"><button>Beranda</button></a>
+        <a href="detail.html"><button class="active">Detail Film</button></a>
+        <a href="kursi.html"><button>Pilih Kursi</button></a>
+        <a href="jadwal.html"><button>Jadwal & Lokasi</button></a>
+        <a href="bayar.html"><button>Pembayaran</button></a>
+      </nav>
+    </header>
+
+    <main class="screen" style="margin-top:18px">
+      <section id="detail" class="page active">
+        <div class="detail">
+          <div class="card">
+            <div class="poster" id="detailPoster">Senjata 2</div>
+            <div class="chips" style="margin-top:8px">
+              <div class="chip" id="detailDurasi">2j 20m</div>
+              <div class="chip" id="detailGenre">Aksi</div>
+            </div>
+          </div>
+          <div class="card">
+            <h2 id="detailTitle">Senjata 2</h2>
+            <div style="color:var(--muted);margin-bottom:8px" id="detailSub">2025 • Sutradara: John Doe</div>
+            <p id="detailSynopsis" style="color:var(--muted)">Aksi penuh tensi, pelarian dari kejaran organisasi gelap di tengah kota metropolitan.</p>
+            <div style="display:flex;gap:8px;margin-top:12px">
+              <button class="btn" id="btnTrailer">Tonton Trailer</button>
+              <a href="kursi.html"><button class="btn ghost" id="btnPesan">Pesan Tiket</button></a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>© 2025 • Demo - Kelompok 6</footer>
+  </div>
+</body>
+</html>

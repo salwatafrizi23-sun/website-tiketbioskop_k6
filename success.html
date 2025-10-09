@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bioskop Online — Sukses</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="brand">
+        <div class="logo">BI</div>
+        <div>
+          <h1>Bioskop K6</h1>
+          <div style="font-size:12px;color:var(--muted)">Demo </div>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html"><button>Beranda</button></a>
+        <a href="detail.html"><button>Detail Film</button></a>
+        <a href="kursi.html"><button>Pilih Kursi</button></a>
+        <a href="jadwal.html"><button>Jadwal & Lokasi</button></a>
+        <a href="bayar.html"><button class="active">Pembayaran</button></a>
+      </nav>
+    </header>
+
+    <main class="screen" style="margin-top:18px">
+      <section id="success" class="page active">
+        <div class="ticket-wrapper">
+          <h2>🎟️ Tiket Berhasil Dipesan!</h2>
+          <p>Tunjukkan kode di bawah saat masuk bioskop.</p>
+          <div id="ticketCard" class="ticket-card">
+            <p>Memuat data...</p>
+          </div>
+          <a href="index.html"><button class="btn">Kembali ke Beranda</button></a>
+        </div>
+      </section>
+    </main>
+
+    <footer>© 2025 • Demo - Kelompok 6</footer>
+  </div>
+
+<script>
+  function formatRupiah(angka) {
+    let reverse = angka.toString().split('').reverse().join(''),
+    ribuan  = reverse.match(/\d{1,3}/g);
+    ribuan  = ribuan.join('.').split('').reverse().join('');
+    return 'Rp ' + ribuan;
+  }
+
+  // Fungsi untuk mendapatkan parameter dari URL
+  const urlParams = new URLSearchParams(window.location.search);
+
+  // Ambil data yang dikirim dari form bayar.html
+  const nama = urlParams.get('nama') || 'Nama Pemesan';
+  const kursi = urlParams.get('kursi') || 'N/A';
+  const film = urlParams.get('film') || 'N/A';
+  const lokasi = urlParams.get('bioskop') || 'N/A';
+  const tanggal = urlParams.get('tanggal') || 'N/A';
+  const jam = urlParams.get('jam') || 'N/A';
+  const total = parseInt(urlParams.get('total')) || 0;
+  const idPesanan = 'TKT' + Date.now().toString().slice(-8);
+
+  const el = document.getElementById('ticketCard');
+  el.innerHTML = `
+    <strong>${film}</strong><br>
+    ID Pesanan: ${idPesanan}<br>
+    Nama: <b>${nama}</b><br>
+    <hr style="border-color:rgba(255,255,255,0.05); margin: 8px 0;">
+    Kursi: <b>${kursi}</b><br>
+    Lokasi: ${lokasi}<br>
+    Waktu: ${tanggal}, ${jam}<br>
+    <div class="total-price" style="margin-top:10px; justify-content:space-between;">
+      <span>Total Bayar</span> 
+      <strong>${formatRupiah(total)}</strong>
+    </div>
+  `;
+</script>
+
+</body>
+</html>

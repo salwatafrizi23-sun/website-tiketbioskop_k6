@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bioskop Online — Pembayaran</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="brand">
+        <div class="logo">BI</div>
+        <div>
+          <h1>Bioskop K6</h1>
+          <div style="font-size:12px;color:var(--muted)">Demo </div>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html"><button>Beranda</button></a>
+        <a href="detail.html"><button>Detail Film</button></a>
+        <a href="kursi.html"><button>Pilih Kursi</button></a>
+        <a href="jadwal.html"><button>Jadwal & Lokasi</button></a>
+        <a href="bayar.html"><button class="active">Pembayaran</button></a>
+      </nav>
+    </header>
+
+    <main class="screen" style="margin-top:18px">
+      <section id="bayar" class="page active">
+        <form action="success.html" method="GET">
+          <div class="content-wrapper">
+            <div class="form-section">
+              <h3>Data Pemesan</h3>
+              <label for="buyerName">Nama Pemesan</label>
+              <input id="buyerName" name="nama" placeholder="Nama lengkap" style="width:100%" required /> 
+              <label for="buyerEmail">Email</label>
+              <input type="email" id="buyerEmail" name="email" placeholder="email@domain.com" style="width:100%" required />
+              <label for="buyerPhone">No. HP</label>
+              <input id="buyerPhone" name="nohp" placeholder="0812xxxx" style="width:100%" required />
+              
+              <label for="paymentMethod">Metode Pembayaran</label>
+              <select id="paymentMethod" name="metode" style="width:100%"><option>Transfer Bank</option><option>E-Wallet</option></select>
+
+              <input type="hidden" name="kursi" value="27" />
+              <input type="hidden" name="film" value="Senjata 2" />
+              <input type="hidden" name="bioskop" value="CGV Grand Mall" />
+              <input type="hidden" name="tanggal" value="2025-10-10" />
+              <input type="hidden" name="jam" value="19:00" />
+              <input type="hidden" name="total" value="50000" />
+              
+              <div class="nav-buttons" style="margin-top:24px">
+                <a href="jadwal.html"><button type="button" class="btn ghost">Kembali</button></a>
+                <button type="submit" class="btn" id="payNow">Bayar Sekarang</button>
+              </div>
+            </div>
+
+            <div class="summary-section">
+              <div class="summary">
+                <h3>Ringkasan Pesanan (Statis)</h3>
+                <div id="orderSummary" class="summary-box">
+                  <b>Senjata 2</b><br>Kursi: 27 (1 Tiket)<br>Bioskop: CGV Grand Mall<br>Tanggal: 2025-10-10<br>Jam: 19:00<br><hr style="border-color:rgba(255,255,255,0.05); margin: 8px 0;"><strong>Total: Rp 50.000</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer>© 2025 • Demo - Kelompok 6</footer>
+  </div>
+</body>
+</html>
