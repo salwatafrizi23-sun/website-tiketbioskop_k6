@@ -1,0 +1,289 @@
+/* --- GENERAL & VARIABLES --- */
+:root {
+  --bg: #141414;
+  --card-bg: #1f1f1f;
+  --text: #f0f0f0;
+  --muted: #888;
+  --accent: #007bff;
+  --accent-hover: #0056b3;
+  --border-color: #333;
+}
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+* {
+  box-sizing: border-box;
+}
+
+/* --- LAYOUT & APP CONTAINER --- */
+.app {
+  width: 100%;
+  max-width: 960px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 12px;
+}
+main {
+  margin-top: 18px;
+}
+footer {
+  text-align: center;
+  margin-top: 24px;
+  padding: 16px;
+  color: var(--muted);
+  font-size: 14px;
+  border-top: 1px solid var(--border-color);
+}
+
+/* --- HEADER & NAVIGATION --- */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand .logo {
+  width: 40px;
+  height: 40px;
+  background-color: var(--accent);
+  color: white;
+  display: grid;
+  place-content: center;
+  font-weight: bold;
+  border-radius: 4px;
+}
+nav {
+  display: flex;
+  gap: 8px;
+}
+nav a {
+  text-decoration: none;
+  background: none;
+  border: 1px solid transparent;
+  color: var(--muted);
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s, color 0.2s;
+}
+nav a:hover {
+  background-color: var(--card-bg);
+  color: var(--text);
+}
+nav a.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  font-weight: bold;
+}
+
+/* --- BUTTONS & CHIPS --- */
+.btn {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: background-color 0.2s;
+}
+.btn:hover {
+  background-color: var(--accent-hover);
+}
+.btn.ghost {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text);
+}
+.btn.ghost:hover {
+  background-color: var(--card-bg);
+  border-color: var(--muted);
+}
+.btn.ghost.active {
+    background-color: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+.chips { display: flex; gap: 8px; }
+.chip {
+  background-color: var(--card-bg);
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+}
+
+/* --- CARDS & GRIDS --- */
+.card {
+  background-color: var(--card-bg);
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+.movie {
+  background-color: var(--card-bg);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+.movie .poster {
+  width: 100%;
+  height: 240px;
+  background: #333;
+  border-radius: 6px;
+  display: grid;
+  place-content: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+.movie h3 { margin: 12px 0 4px; }
+.movie .meta { font-size: 13px; color: var(--muted); }
+
+/* --- DETAIL PAGE --- */
+.detail {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 18px;
+}
+.detail .poster {
+  width: 100%;
+  height: 350px;
+  background-color: #333;
+  display: grid;
+  place-content: center;
+  font-weight: bold;
+  font-size: 24px;
+  border-radius: 6px;
+}
+
+/* --- KURSI PAGE --- */
+.seat-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.screen-label {
+  width: 80%;
+  height: 10px;
+  background: linear-gradient(to bottom, #fff, #555);
+  border-radius: 10px;
+  box-shadow: 0 0 20px 5px #fff;
+}
+.seat-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
+  width: fit-content;
+}
+.seat {
+  width: 35px;
+  height: 35px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  display: grid;
+  place-content: center;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.seat:hover {
+  background-color: var(--accent);
+  color: white;
+}
+.seat.taken {
+  background-color: #555;
+  color: #888;
+  cursor: not-allowed;
+}
+/* Simulating selection with checkbox */
+.seat-wrapper input[type="checkbox"] { display: none; }
+.seat-wrapper input[type="checkbox"]:checked + .seat {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+.legend { display: flex; gap: 16px; font-size: 13px; margin-top: 16px;}
+.legend-item { display: flex; align-items: center; gap: 6px; }
+.legend .box { width: 15px; height: 15px; border-radius: 2px; }
+.seat-style { background: var(--card-bg); border: 1px solid var(--border-color); }
+.taken-style { background: #555; }
+
+/* --- JADWAL & BAYAR PAGE --- */
+.content-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 18px;
+}
+.form-section { display: flex; flex-direction: column; gap: 8px; }
+label { font-size: 14px; color: var(--muted); margin-top: 8px; }
+input, select {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text);
+  font-size: 15px;
+}
+.time-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.summary {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 16px;
+  border-radius: 8px;
+  position: sticky;
+  top: 20px;
+}
+.summary-box {
+  background-color: var(--bg);
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100px;
+}
+.total-price { display: flex; justify-content: space-between; font-weight: bold; font-size: 18px; margin-top: 12px; }
+.nav-buttons { display: flex; justify-content: flex-end; gap: 10px; }
+
+/* --- SUCCESS PAGE --- */
+.ticket-wrapper { text-align: center; max-width: 450px; margin: 40px auto; }
+.ticket-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+  text-align: left;
+  line-height: 1.8;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 768px) {
+  header { flex-direction: column; gap: 12px; }
+  .detail { grid-template-columns: 1fr; }
+  .detail .poster { height: 300px; }
+  .content-wrapper { grid-template-columns: 1fr; }
+  .seat-grid { gap: 8px; }
+  .seat { width: 30px; height: 30px; }
+}
